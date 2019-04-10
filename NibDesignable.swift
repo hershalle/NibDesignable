@@ -195,3 +195,24 @@ open class NibDesignableCollectionViewCell: UICollectionViewCell, NibDesignableP
         self.setupNib()
     }
 }
+
+
+/// This view maybe hard to load in the Interface Builder.
+/// I prefere this view to be non IBDesignable
+open class NibView: UIView, NibDesignableProtocol {
+
+    // MARK: - Initializer
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .clear
+        self.setupNib()
+    }
+
+    // MARK: - NSCoding
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        backgroundColor = .clear
+        self.setupNib()
+    }
+}
+
